@@ -64,4 +64,4 @@ cd $build_dir
 linux_build
 busybox_build
 initrd_setup
-run
+#run

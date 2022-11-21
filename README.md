@@ -12,3 +12,10 @@ unnecessary Busybox programs and Linux drivers must be disabled.
 
 [This video](https://youtu.be/asnXWOUKhTA) has been very helpful in the initial
 setup.
+
+## Build Requirements
+
+* cpio
+* wget
+* x86\_linux\_musl toolchain
+* make
