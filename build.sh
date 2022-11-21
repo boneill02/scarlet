@@ -52,6 +52,7 @@ clear
 EOF
 	chmod -R 777 .
 	find . | cpio -o -H newc >../initrd.img
+	cd ..
 }
 
 run() {
