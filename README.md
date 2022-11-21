@@ -10,3 +10,6 @@ total. In order to store on a ROM chip on one of these systems, the total size
 must be anywhere between 2MB and 10MB. In order to achieve this, certain
 unnecessary Busybox programs and Linux drivers must be disabled (not currently
 supported).
+
+[This video](https://youtu.be/asnXWOUKhTA) has been very helpful in the initial
+setup.
