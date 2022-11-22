@@ -8,12 +8,13 @@ LINUX_MAJOR=$(echo $LINUX_VER | cut -d'.' -f1)
 MAKEFLAGS="CC=$CC -j8"
 
 build_dir="$(pwd)/build"
+cfg_dir="$(pwd)/cfg"
 
 linux_build() {
 	wget https://cdn.kernel.org/pub/linux/kernel/v$LINUX_MAJOR.x/linux-$LINUX_VER.tar.xz
 	tar -xvf linux-$LINUX_VER.tar.xz
 	cd linux-$LINUX_VER
-	make defconfig
+	cp $cfg_dir/linux-$LINUX_VER .config
 	make $MAKEFLAGS || exit
 	cp arch/x86_64/boot/bzImage ..
 	cd ..
@@ -23,8 +24,7 @@ busybox_build() {
 	wget https://www.busybox.net/downloads/busybox-$BUSYBOX_VER.tar.bz2
 	tar -xvf busybox-$BUSYBOX_VER.tar.bz2
 	cd busybox-$BUSYBOX_VER
-	make defconfig
-	echo "CONFIG_STATIC=y" >> .config
+	cp $cfg_dir/linux-$LINUX_VER .config
 	make $MAKEFLAGS || exit
 	cd ..
 }
@@ -64,4 +64,3 @@ cd $build_dir
 linux_build
 busybox_build
 initrd_setup
-#run
